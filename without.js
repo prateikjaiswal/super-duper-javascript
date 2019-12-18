@@ -1,21 +1,17 @@
-const withoutArray = (arrayToFilter, arrayToLookInto) => {
-  let result = [];
+let result = [];
+arrayToLookIntoIndex = 0;
+function without(arrayToFilter, arrayToLookInto) {
   arrayToFilter.sort((a, b) => a - b);
   arrayToLookInto.sort((a, b) => a - b);
-  arrayToLookIntoIndex = 0;
-  const filterAndFillResults = function() {
-    if (!arrayToFilter.includes(arrayToLookInto[arrayToLookIntoIndex])) {
-      result.push(arrayToLookInto[arrayToLookIntoIndex]);
-    }
-    if (arrayToLookIntoIndex === arrayToLookInto.length - 1) {
-      return result;
-    } else {
-      arrayToLookIntoIndex++;
-      name();
-    }
-  };
-  return filterAndFillResults;
-};
-
-let without = withoutArray;
-console.log(without());
+  if (!arrayToFilter.includes(arrayToLookInto[arrayToLookIntoIndex])) {
+    result.push(arrayToLookInto[arrayToLookIntoIndex]);
+  }
+  if (arrayToLookIntoIndex === arrayToLookInto.length - 1) {
+    return result;
+  } else {
+    arrayToLookIntoIndex++;
+    without(arrayToFilter, arrayToLookInto);
+  }
+}
+without([1, 2], [1, 2, 1, 4, 5]);
+console.log(result);
