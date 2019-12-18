@@ -1,6 +1,6 @@
 let result = [];
 arrayToLookIntoIndex = 0;
-function without(arrayToFilter, arrayToLookInto) {
+const without = (arrayToFilter, arrayToLookInto) => {
   arrayToFilter.sort((a, b) => a - b);
   arrayToLookInto.sort((a, b) => a - b);
   if (!arrayToFilter.includes(arrayToLookInto[arrayToLookIntoIndex])) {
@@ -12,6 +12,6 @@ function without(arrayToFilter, arrayToLookInto) {
     arrayToLookIntoIndex++;
     without(arrayToFilter, arrayToLookInto);
   }
-}
+};
 without([1, 2], [1, 2, 1, 4, 5]);
 console.log(result);
